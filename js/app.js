@@ -45,12 +45,12 @@ function createPlayers(players, gameDeck) {
 
 
     // for (let i = 0; i < players; i++) {
-    for (let player of players) {
-        player = new Player(i, gameDeck, gameTable, hand)
-        console.log("Get a hand!")
-        console.log(hand)
-        // return (hand)
-    }
+
+    let player = new Player(i, players, gameDeck, gameTable, hand)
+    console.log("Get a hand!")
+    console.log(hand)
+    // return (hand)
+
 
     createTurn(gameDeck, gameTable, hand)
 }
