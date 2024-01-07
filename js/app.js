@@ -1,6 +1,5 @@
 import { deck } from "./deck.js";
 import { Game } from "./Game.js";
-import { Hand } from "./Hand.js";
 import { Player } from "./Player.js";
 
 
@@ -40,10 +39,24 @@ function createDeck(players) {
 }
 
 function createPlayers(players, gameDeck) {
-    let gameTable = []
+    let gameTable = [],
+        hand = {},
+        i = 0
 
-    for (let i = 0; i < players; i++) {
-        let player = new Player(i, gameDeck, gameTable)
+
+    // for (let i = 0; i < players; i++) {
+    for (let player of players) {
+        player = new Player(i, gameDeck, gameTable, hand)
+        console.log("Get a hand!")
+        console.log(hand)
+        // return (hand)
     }
+
+    createTurn(gameDeck, gameTable, hand)
+}
+
+function createTurn(gameDeck, gameTable, hand) {
     console.log(gameTable)
+    console.log(gameDeck)
+    console.log(hand)
 }
