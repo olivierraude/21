@@ -1,41 +1,31 @@
 /**
- * Class Hand
+ * Class Player
+ *  Cette classe renvoie un tableau de joueurs
  */
-
-import { Hand } from "./Hand.js"
 
 export class Player {
     /**
-     * @param {number} i
-     * @param {array} gameDeck
+     * @param {number} index
+     * @param {HTMLElement} parent - Élément qui reçoit le contenu
      * @param {array} gameTable
+     * @param {number} players
      */
 
-    constructor(i, gameDeck, gameTable) {
-        this.joueur = `Player ${i}`
-        this.gameDeck = gameDeck
+    constructor(index, parent, gameTable, players) {
+        this.index = index
+        this.parent = parent
         this.gameTable = gameTable
+        this.players = players
 
-        this.createTable(i, this.joueur, this.gameDeck, this.gameTable)
+        this.createTable(index, this.gameTable)
     }
 
-    // on pousse la carte dans le tableau
-    createTable = (i, joueur, gameDeck, gameTable) => {
+    // on pousse le joueur dans le tableau
+    createTable = (index, gameTable) => {
 
-        this.gameTable.push(this.joueur)
+        this.gameTable.push(`Player ${index+1}`)
 
-        this.gameTurn(i, this.gameDeck, this.gameTable)
+        // this.createHand(index, this.gameDeck)
+        return(index, this.gameDeck, this.gameTable)   
     }
-
-    // On créée le tour de jeu
-    gameTurn = (i, gameDeck, gameTable) => {
-
-        gameTable.forEach(player => {
-            // Pour chaque joueur on attribue une card du tableau gameDeck
-            let hand = new Hand(i, gameDeck, gameTable)
-
-            console.log(`Player ${i + 1}: ${hand.value} de ${hand.color} -> Point: ${hand.point}`)
-        });
-    }
-
 }

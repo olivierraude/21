@@ -4,12 +4,15 @@ body {
     align-items: center;
 
     height: 100vh;
+
+    font-family: 'Helvetica Neue', sans-serif;
 }
 
 section {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
     width: 60%;
     height: 40vh;
@@ -27,4 +30,8 @@ section {
     select {
         margin: 10px;
     }
+}
+
+.hidden {
+    display: none;
 }

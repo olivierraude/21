@@ -1,5 +1,6 @@
 /**
  * Class Card
+ *  Cette classe renvoie une carte
  */
 
 export class Card {

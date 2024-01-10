@@ -1,5 +1,6 @@
 /**
  * Class Game
+ *  Cette classe renvoie un jeu de carte mélangé
  */
 
 import { Card } from "./Card.js";
@@ -53,6 +54,6 @@ export class Game {
             [this.gameDeck[currentIndex], this.gameDeck[randomIndex]] = [
                 this.gameDeck[randomIndex], this.gameDeck[currentIndex]];
         }
-        return (this.gameDeck)
+        return this.gameDeck
     }
 }
