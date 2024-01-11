@@ -3,10 +3,12 @@ import { Game } from "./Game.js";
 import { Player } from "./Player.js";
 import { Hand } from "./Hand.js";
 
+
 let playerNb = document.getElementById('players-select'),
-    btn = document.querySelector('.btn'),
+    btn = document.querySelector('button'),
     section = document.querySelector('section'),
     container = document.querySelector('.container')
+
 
 
 btn.addEventListener("click", () => {
@@ -15,6 +17,7 @@ btn.addEventListener("click", () => {
 
     if (players != "") {
         removeContainer()
+        // btn.removeEventListener("click")
         // On créée un jeu de carte mélangé (class jeu)
         createDeck(players)
     } else {
@@ -23,9 +26,11 @@ btn.addEventListener("click", () => {
 })
 
 
+
 function removeContainer() {
     container.remove();
 }
+
 
 
 function createDeck(players) {
@@ -34,11 +39,12 @@ function createDeck(players) {
 
     let game = new Game(deck, gameDeck)
     
-    console.log(gameDeck)
+    // console.log(gameDeck)
     // On créée un joueur (class joueur)
     // createPlayers(players, gameDeck)
     createHand(players, gameDeck)
 } // On créée un tableau de joueurs
+
 
 
 function createPlayers(players, gameDeck) {
@@ -51,10 +57,11 @@ function createPlayers(players, gameDeck) {
         // console.log(index)
     }
 
-    console.log(gameTable)
-    createHand(gameDeck)
+    // console.log(gameTable)
+    // createHand(gameDeck)
     // createHand(index, gameDeck, gameTable)
 } // On créée une main
+
 
 
 function createHand(players, gameDeck) {
@@ -69,16 +76,23 @@ function createHand(players, gameDeck) {
 } // On créée la fenêtre de jeu dans section
 
 
+
 function createWindow(i, hand) {
     
     // création des éléments HTML
-    let gameWindow = document.createElement('div')
-    let playerInfo = document.createElement('p')
+    let gameWindow = document.createElement('div'),
+        playerInfo = document.createElement('p'),
+        btn = document.createElement('button')
 
     playerInfo.innerHTML = `Player ${i + 1}: ${hand.value} de ${hand.color} -> Point: ${hand.point}`
+    btn.innerHTML = "Next Player"
 
     section.appendChild(gameWindow)
     gameWindow.appendChild(playerInfo)
+    gameWindow.appendChild(btn)
+
+    console.log(btn)
+    // btn.addEventListener('click', console.log("Clicked!"))
 
     // On ajoute la classe CSS hidden aux div concernées
     if (i > 0) {
@@ -87,7 +101,9 @@ function createWindow(i, hand) {
 
     // console.log(hand.point)
     getPoint(i, hand.point)
+    nextPlayer(btn)
 } // On enregistre les points de chaque joueur
+
 
 
 function getPoint(i, point) {
@@ -96,8 +112,32 @@ function getPoint(i, point) {
     console.log(i, point)
 }
 
+
+function nextPlayer(btn) {
+
+    // console.log(i)
+    // console.log(gameWindow)
+    console.log("Clicked!")
+    
+    // divs.forEach(div => {
+        btn.addEventListener('click', () => {
+            
+            // console.log("Clicked!")
+            let div = document.querySelector('div'),
+                nextDiv = document.querySelector('div').nextSibling
+    
+            div.remove()
+            nextDiv.classList.remove('hidden')
+        })
+    // })
+}
+
 // Au clic du bouton on enregistre les points de chaque joueur & on modifie les classes pour faire apparaitre la fenêtre suivante
 
 // Au tours suivants
-// Le joueur choisit une carte
-// 
+// Le joueur choisit une carte ou pas
+
+// On analyse le score, s'il est supérieur a 21 
+// le joueur est retiré du tableau de joueur
+
+// S'il ne veut pas de carte 
